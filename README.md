@@ -779,7 +779,7 @@ The menu is displayed before every choice. It is shown in full for Test Case 1 a
 
 ## Author
 
-- **Name:** JASWANTH . J
-- **Registration No.:** AP26110090182
-- **GitHub:** [github.com/BOLDGLOBE](https://github.com/BOLDGLOBE)
-- **LinkedIn:** [linkedin.com/in/jaswanth-joga-2baa74423](https://www.linkedin.com/in/jaswanth-joga-2baa74423/)
+- **Name:** n.rupesh
+- **Registration No.:** AP26110090179
+- **GitHub:** https://github.com/rupeshpavankrishnanali-boop/30-days-challenge-1/edit/main/README.md
+- **LinkedIn:**https://www.linkedin.com/in/rupeshpavankrishna-nali-99745343a?utm_source=share_via&utm_content=profile&utm_medium=member_android
