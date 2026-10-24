@@ -783,3 +783,151 @@ The menu is displayed before every choice. It is shown in full for Test Case 1 a
 - **Registration No.:** AP26110090179
 - **GitHub:** https://github.com/rupeshpavankrishnanali-boop/30-days-challenge-1/edit/main/README.md
 - **LinkedIn:**https://www.linkedin.com/in/rupeshpavankrishna-nali-99745343a?utm_source=share_via&utm_content=profile&utm_medium=member_android
+
+
+
+
+
+CHALLENGE 6 
+
+
+ALGORITHM -
+
+
+1.Input Validation: Read the array size N (between 5 and 12) and then read N elements (each between 0 and 1000).
+
+2. Display Original: Loop through the array from indices 0 to N - 1 and print all elements side by side.
+
+3. Basic Statistics: Find the sum, minimum, and maximum elements by scanning the array, then compute the average as sum/N.
+
+4. Second-Largest Distinct: Scan the array to find the highest value that is strictly less than the maximum value.
+
+5. Local Peaks: Count how many elements are strictly greater than both their immediate left and right neighbors.
+
+6. Longest Run: Track the longest consecutive streak of strictly increasing numbers by comparing adjacent elements.
+
+7. In-Place Rotation: Shift the array elements rightward step-by-step K times, wrapping the last element to the front each time.
+
+8. Divisibility Check: Calculate a divisor D = (R (mod 9)) + 1 and count how many elements in the array leave a remainder of 0 when divided by D.
+
+#include <stdio.h>
+
+int main() {
+    int arr[12]; // Array size up to 12 as per rules
+    int N, i, j;
+
+    // --- INPUT VALIDATION ---
+    do {
+        printf("Enter number of readings N (5 to 12): ");
+        scanf("%d", &N);
+    } while (N < 5 || N > 12);
+
+    for (i = 0; i < N; i++) {
+        do {
+            printf("Enter reading %d (0 to 1000): ", i + 1);
+            scanf("%d", &arr[i]);
+        } while (arr[i] < 0 || arr[i] > 1000);
+    }
+
+    // --- TASK 1: Display Original Readings ---
+    printf("\nOriginal readings: ");
+    for (i = 0; i < N; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    // --- TASK 2: Sum, Average, Min, Max ---
+    int sum = 0;
+    int min = arr[0];
+    int max = arr[0];
+
+    for (i = 0; i < N; i++) {
+        sum += arr[i];
+        if (arr[i] < min) min = arr[i];
+        if (arr[i] > max) max = arr[i];
+    }
+    float avg = (float)sum / N;
+
+    printf("Sum: %d | Average: %.2f | Min: %d | Max: %d\n", sum, avg, min, max);
+
+    // --- TASK 3: Second-Largest Distinct Value ---
+    int second_max = -1; 
+    for (i = 0; i < N; i++) {
+        if (arr[i] < max && arr[i] > second_max) {
+            second_max = arr[i];
+        }
+    }
+    if (second_max == -1) {
+        printf("Second-Largest Distinct: None\n");
+    } else {
+        printf("Second-Largest Distinct: %d\n", second_max);
+    }
+
+    // --- TASK 4: Count Local Peaks ---
+    int peaks = 0;
+    for (i = 1; i < N - 1; i++) {
+        if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) {
+            peaks++;
+        }
+    }
+    printf("Local Peaks: %d\n", peaks);
+
+    // --- TASK 5: Longest Increasing Run ---
+    int max_run = 1, current_run = 1;
+    for (i = 1; i < N; i++) {
+        if (arr[i] > arr[i - 1]) {
+            current_run++;
+        } else {
+            current_run = 1;
+        }
+        if (current_run > max_run) {
+            max_run = current_run;
+        }
+    }
+    printf("Longest Increasing Run Length: %d\n", max_run);
+
+    // --- TASK 6: In-Place Rotation ---
+    int K;
+    printf("\nEnter shift K (positive for right, negative for left): ");
+    scanf("%d", &K);
+
+    // Normalize shift to stay within array boundaries
+    int shift = K % N;
+    if (shift < 0) {
+        shift += N; 
+    }
+
+    // Shift elements right by 1 position, repeated 'shift' times
+    for (i = 0; i < shift; i++) {
+        int temp = arr[N - 1];
+        for (j = N - 1; j > 0; j--) {
+            arr[j] = arr[j - 1];
+        }
+        arr[0] = temp;
+    }
+
+    printf("Rotated array: ");
+    for (i = 0; i < N; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    // --- TASK 7: Registration Number Divisibility Check ---
+    int R;
+    printf("\nEnter last 2 digits of reg number (R): ");
+    scanf("%d", &R);
+
+    int D = (R % 9) + 1;
+    int count = 0;
+    for (i = 0; i < N; i++) {
+        if (arr[i] % D == 0) {
+            count++;
+        }
+    }
+    printf("D = %d | Count of values divisible by D: %d\n", D, count);
+
+    return 0;
+}
+author :n.rupesh.
+reg number:AP261100179
+
